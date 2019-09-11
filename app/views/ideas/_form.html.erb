@@ -11,6 +11,17 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+  <%= form.hidden_field :autor_id, value: current_account.id %>
+
   <div class="actions">
     <%= form.submit %>
   </div>
