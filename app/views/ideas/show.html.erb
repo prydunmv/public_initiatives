@@ -6,28 +6,36 @@
 <% if current_account.voted_for?(@idea) %>
   <% if current_account.voted_up_on?(@idea) %>
     <%= form_with(url: dislike_idea_votes_path(@idea), local: true) do |form| %>
-      <%= form.hidden_field :name %>
       <div class="actions">
         <%= form.submit "-1 " %>
       </div>
     <% end %>
+    <%= form_with(url: unlike_idea_votes_path(@idea), local: true) do |form| %>
+      <div class="actions">
+        <%= form.submit " 0 " %>
+      </div>
+    <% end %>
+
   <% else %>
     <%= form_with(url: like_idea_votes_path(@idea), local: true) do |form| %>
-      <%= form.hidden_field :name %>
       <div class="actions">
         <%= form.submit "+1 " %>
       </div>
     <% end %>
+    <%= form_with(url: undislike_idea_votes_path(@idea), local: true) do |form| %>
+      <div class="actions">
+        <%= form.submit " 0 " %>
+      </div>
+    <% end %>
   <% end %>
+
 <% else %>
   <%= form_with(url: dislike_idea_votes_path(@idea), local: true) do |form| %>
-    <%= form.hidden_field :name %>
     <div class="actions">
       <%= form.submit "-1 " %>
     </div>
   <% end %>
   <%= form_with(url: like_idea_votes_path(@idea), local: true) do |form| %>
-    <%= form.hidden_field :name %>
     <div class="actions">
       <%= form.submit "+1 " %>
     </div>
