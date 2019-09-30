@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 2019_09_26_072339) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "initiatives", force: :cascade do |t|
+    t.integer "idea_id"
+    t.integer "account_id"
+    t.integer "initiator_proposal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_initiatives_on_account_id"
+    t.index ["idea_id"], name: "index_initiatives_on_idea_id"
+    t.index ["initiator_proposal_id"], name: "index_initiatives_on_initiator_proposal_id"
+  end
+
   create_table "initiator_proposals", force: :cascade do |t|
     t.integer "idea_id"
     t.integer "account_id"

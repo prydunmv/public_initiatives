@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
  
-  get 'initiatives/new'
-  get 'initiatives/create'
-  get 'initiatives/delete'
   devise_for :accounts
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'ideas#index'
@@ -18,4 +15,5 @@ Rails.application.routes.draw do
     end
     resources :initiator_proposals, only: [:new, :create, :edit, :update, :destroy] 
   end
+  resources :initiatives, only: [:show, :destroy]
 end
