@@ -1,3 +1,3 @@
 class PersonProfile < ApplicationRecord
-  belongs_to :account_id
+  belongs_to :account
 end
