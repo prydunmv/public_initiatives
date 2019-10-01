@@ -15,5 +15,5 @@ Rails.application.routes.draw do
     resources :initiator_proposals, only: [:new, :create, :edit, :update, :destroy] 
   end
   resources :initiatives, only: [:show, :destroy]
-  resources :profile, only: [:edit, :show]
+  resources :profile, only: [:edit, :index]
 end
