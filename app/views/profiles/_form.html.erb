@@ -1,9 +1,9 @@
 <%= form_with(model: [@profile], local: true) do |form| %>
   <%= form.label 'email' %>
   <%= form.hidden_field :account_id, value: current_account.id %>
-  <%= form.label 'назва' %>
+  <%= form.label 'ім`я' %>
   <%= form.text_area :first_name %>
-  <%= form.label 'назва 2' %>
+  <%= form.label 'прізвище' %>
   <%= form.text_area :last_name %>
   <div class="actions">
     <%= form.submit "готово" %>
