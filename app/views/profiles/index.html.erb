@@ -1,4 +1,9 @@
 <p id="notice"><%= notice %></p>
-<%= @Profile.account %>
-<%= @Profile.first_name %>
-<%= @Profile.last_name %>
+
+ 	<%= @person_profile.account.email %>
+	<%= @person_profile.first_name %>
+	<%= @person_profile.last_name %>
+	<%= link_to 'edit', edit_profile_path(@person_profile)%> 
+
+
+ 
