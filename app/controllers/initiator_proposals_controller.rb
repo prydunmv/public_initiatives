@@ -21,9 +21,15 @@ class InitiatorProposalsController < ApplicationController
   end
 
   def edit
+    @idea = Idea.find(params[:idea_id])
+    @initiator_proposal = InitiatorProposal.find(params[:id])
   end
 
   def update
+    @idea = Idea.find(params[:idea_id])
+    @initiator_proposal = InitiatorProposal.find(params[:id])
+    @initiator_proposal.update(initiator_proposal_params)
+    redirect_to idea_path(@idea)
   end
 
   def destroy

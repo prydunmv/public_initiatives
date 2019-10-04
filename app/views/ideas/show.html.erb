@@ -57,14 +57,35 @@
       <tr>
         <td><%= proposal.account.email %></td>
         <td><%= proposal.plan %></td>
-        <td><%= link_to 'Edit', edit_idea_initiator_proposal_path(@idea, proposal) %></td>
+        <td><%= proposal.get_likes.size %></td>
+        <td>
         <% if current_account.id == proposal.account_id  %>
+          <td><%= link_to 'Edit', edit_idea_initiator_proposal_path(@idea, proposal) %></td>
           <td><%= link_to 'Destroy', [@idea, proposal], method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
+
+        <% if current_account.voted_up_on?(proposal) %>
+          <%= form_with(url: vote_un_idea_initiator_proposal_votes_path(@idea, proposal), local: true) do |form| %>
+            <div class="actions">
+              <%= form.submit " ------ " %>
+            </div>
+          <% end %>
+        <% else %>  
+          <%= form_with(url: vote_up_idea_initiator_proposal_votes_path(@idea, proposal), local: true) do |form| %>
+            <div class="actions">
+            <%= form.submit "підтримати" %>
+            </div>
+          <% end %>
+        <% end %>
+      </td>
+          
       </tr>
     <% end %>
   </tbody>
 </table>
+
+
+
 
 <% unless @proposals.find_by(account_id: current_account.id) %>
   <%= link_to 'хочу втілити цю ідею', new_idea_initiator_proposal_path(@idea) %> 
