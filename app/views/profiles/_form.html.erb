@@ -1,0 +1,11 @@
+<%= form_with(url:profile_path(@person_profile), local: true) do |form| %>
+  <%= form.label 'email' %>
+  <%= form.hidden_field :account_id, value: current_account.id %>
+  <%= form.label 'ім`я' %>
+  <%= form.text_field :first_name %>
+  <%= form.label 'прізвище' %>
+  <%= form.text_field :last_name %>
+  <div class="actions">
+    <%= form.submit "готово" %>
+  </div>
+<% end %>
