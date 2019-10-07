@@ -62,21 +62,24 @@
         <% if current_account.id == proposal.account_id  %>
           <td><%= link_to 'Edit', edit_idea_initiator_proposal_path(@idea, proposal) %></td>
           <td><%= link_to 'Destroy', [@idea, proposal], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+        <% end %> 
 
-        <% if current_account.voted_up_on?(proposal) %>
-          <%= form_with(url: vote_un_idea_initiator_proposal_votes_path(@idea, proposal), local: true) do |form| %>
-            <div class="actions">
-              <%= form.submit " ------ " %>
-            </div>
+        <% unless current_account.id == proposal.account_id  %>
+          <% if current_account.voted_up_on?(proposal) %>
+            <%= form_with(url: vote_un_idea_initiator_proposal_votes_path(@idea, proposal), local: true) do |form| %>
+              <div class="actions">
+                <%= form.submit " ------ " %>
+              </div>
+            <% end %>
+          <% else %>  
+            <%= form_with(url: vote_up_idea_initiator_proposal_votes_path(@idea, proposal), local: true) do |form| %>
+              <div class="actions">
+              <%= form.submit "підтримати" %>
+              </div>
+            <% end %>
           <% end %>
-        <% else %>  
-          <%= form_with(url: vote_up_idea_initiator_proposal_votes_path(@idea, proposal), local: true) do |form| %>
-            <div class="actions">
-            <%= form.submit "підтримати" %>
-            </div>
-          <% end %>
-        <% end %>
+
+        <% end %>   
       </td>
           
       </tr>
