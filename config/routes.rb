@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   devise_for :accounts
+  # devise_for :accounts, ActiveAdmin::Devise.config
+  # ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'ideas#index'
   resources :ideas do
@@ -18,7 +20,7 @@ Rails.application.routes.draw do
           post :vote_up
           post :vote_un
         end
-      end 
+      end
     end
   end
   resources :initiatives, only: [:show, :destroy]
