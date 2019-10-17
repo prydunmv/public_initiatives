@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :admin_accounts, {
+    class_name: 'Account', controllers: ActiveAdmin::Devise.controllers
+      .merge(registrations: 'registrations')
+  }.merge(ActiveAdmin::Devise.config.except(:controllers))
 
   devise_for :accounts
-  # devise_for :accounts, ActiveAdmin::Devise.config
-  # ActiveAdmin.routes(self)
+  ActiveAdmin.routes(self)
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'ideas#index'
   resources :ideas do
