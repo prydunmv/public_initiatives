@@ -11,6 +11,7 @@ class IdeasController < ApplicationController
   # GET /ideas/1
   # GET /ideas/1.json
   def show
+    @proposals = @idea.initiator_proposals
   end
 
   # GET /ideas/new

@@ -10,6 +10,11 @@
   </head>
 
   <body>
+    <% if account_signed_in? %>
+      <%= link_to 'вийти', destroy_account_session_path, method: :delete %>
+    <% else %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

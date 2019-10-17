@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_03_174406) do
+ActiveRecord::Schema.define(version: 2019_09_30_174749) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,6 +30,36 @@ ActiveRecord::Schema.define(version: 2019_09_03_174406) do
     t.integer "autor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "initiatives", force: :cascade do |t|
+    t.integer "idea_id"
+    t.integer "account_id"
+    t.integer "initiator_proposal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_initiatives_on_account_id"
+    t.index ["idea_id"], name: "index_initiatives_on_idea_id"
+    t.index ["initiator_proposal_id"], name: "index_initiatives_on_initiator_proposal_id"
+  end
+
+  create_table "initiator_proposals", force: :cascade do |t|
+    t.integer "idea_id"
+    t.integer "account_id"
+    t.text "plan"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_initiator_proposals_on_account_id"
+    t.index ["idea_id"], name: "index_initiator_proposals_on_idea_id"
+  end
+
+  create_table "person_profiles", force: :cascade do |t|
+    t.integer "account_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_person_profiles_on_account_id"
   end
 
   create_table "votes", force: :cascade do |t|
