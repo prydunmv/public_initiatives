@@ -1,0 +1,19 @@
+<%= form_with(model: initiative, local: true) do |form| %>
+  <% if initiative.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(initiative.errors.count, "error") %> prohibited this initiative from being saved:</h2>
+
+      <ul>
+      <% initiative.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :author_id, value: current_account.id %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
