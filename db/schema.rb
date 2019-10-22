@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_11_183100) do
+ActiveRecord::Schema.define(version: 2019_10_22_175200) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2019_10_11_183100) do
     t.integer "initiator_proposal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active"
     t.index ["account_id"], name: "index_initiatives_on_account_id"
     t.index ["idea_id"], name: "index_initiatives_on_idea_id"
     t.index ["initiator_proposal_id"], name: "index_initiatives_on_initiator_proposal_id"
