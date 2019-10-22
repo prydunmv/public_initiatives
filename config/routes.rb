@@ -27,6 +27,6 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :initiatives, only: [:show, :destroy]
+  resources :initiatives, only: [:index, :show, :destroy]
   resources :profiles, only: [:edit, :index, :update]
 end

@@ -17,7 +17,7 @@ ActiveAdmin.register InitiatorProposal do
 
   member_action :approve, method: :get do
     initiative = resource.approve
-    redirect_to admin_initiative_path, notice: "Initiative created"
+    redirect_to admin_initiative_path(initiative), notice: "Initiative created"
   end
 
 end
