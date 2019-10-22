@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_22_175200) do
+ActiveRecord::Schema.define(version: 2019_10_22_175729) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -86,6 +86,14 @@ ActiveRecord::Schema.define(version: 2019_10_22_175200) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "stop_initiative_requests", force: :cascade do |t|
+    t.integer "idea_id"
+    t.boolean "resolved"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["idea_id"], name: "index_stop_initiative_requests_on_idea_id"
   end
 
   create_table "votes", force: :cascade do |t|
