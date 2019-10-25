@@ -7,17 +7,14 @@
     <tr>
       <th>idea</th>
       <th>initiator_proposal</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
     <% @initiatives.each do |initiative| %>
       <tr>
         <td><%= initiative.idea.title %></td>
-        <td><%= link_to 'Show', initiative %></td>
-        <td><%= link_to 'Destroy', initiative, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+        <td><%= link_to 'Show', initiative %></td> 	
+	<% end %>
   </tbody>
 </table>
 
