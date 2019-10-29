@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   end
   resources :initiatives, only: [:index, :show] do
     delete :cancel, on: :member
+    resources :implementation_stages
   end
   resources :profiles, only: [:edit, :index, :update]
 end

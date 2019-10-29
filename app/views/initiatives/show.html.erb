@@ -3,7 +3,10 @@
 <p><%= @initiative.idea.description %></p>
 <p><%= @initiative.account.email %></p>
 <p><%= @initiative.initiator_proposal.plan %></p>
-
+<%  @stages.each do |stage| %>
+  <p><%= link_to stage.title, initiative_implementation_stage_path(@initiative, stage) %></p>
+<% end %>
 <% if current_account.id == @initiative.account_id  %>
-	<p><%= link_to 'cancel', cancel_initiative_path(initiative), method: :delete, data: { confirm: 'Are you sure?' } %></p>
-<% end %>       
+  <p><%= link_to 'додати етап', new_initiative_implementation_stage_path(@initiative) %></p>
+	<p><%= link_to 'cancel', cancel_initiative_path(@initiative), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<% end %>

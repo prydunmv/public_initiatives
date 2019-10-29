@@ -5,6 +5,8 @@ class InitiativesController < ApplicationController
 
   def show
     @initiative = Initiative.find(params[:id])
+    @stages = @initiative.implementation_stages
+
   end
 
   def cancel
