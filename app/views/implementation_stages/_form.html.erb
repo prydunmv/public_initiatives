@@ -1,0 +1,26 @@
+  <% if @stage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@stage.errors.count, "error") %> prohibited this idea from being saved:</h2>
+
+      <ul>
+      <% @stage.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form_with(model:[@initiative, @stage], local: true) do |form| %>
+  <%= form.hidden_field :account_id, value: current_account.id %>
+  <p><%= form.label 'назва етапу' %>
+    <%= form.text_field :title %></p>
+  <p><%= form.label 'опис етапу' %>
+    <%= form.text_area :body %></p>
+  <p><%= form.label 'дата створення' %>
+    <%= form.date_select :start_date %></p>
+  <p><%= form.label 'дата завершення' %>
+    <%= form.date_select :end_date %></p>
+  <div class="actions">
+    <%= form.submit "опублікувати" %>
+  </div>
+<% end %>
+

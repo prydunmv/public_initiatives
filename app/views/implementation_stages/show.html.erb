@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+<p><%= @stage.title %></p>
+<p><%= @stage.body %></p>
+<p><%= @stage.start_date %></p>
+<p><%= @stage.end_date %></p>
+<p><%= link_to "Edit", edit_initiative_implementation_stage_path(@initiative, @stage) %></p>
+ <td><%= link_to 'Destroy', [@initiative, @stage], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<p><%= link_to 'Back', initiative_path(@initiative) %></p>

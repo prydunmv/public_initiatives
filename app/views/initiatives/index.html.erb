@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Initiatives</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>idea</th>
+      <th>initiator_proposal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @initiatives.each do |initiative| %>
+      <tr>
+        <td><%= initiative.idea.title %></td>
+        <td><%= link_to 'Show', initiative %></td> 	
+	<% end %>
+  </tbody>
+</table>
+
+<br>
+
+
