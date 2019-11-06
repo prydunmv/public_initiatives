@@ -1,6 +1,11 @@
-<h1>редагувати</h1>
-<%= render 'form', idea: @idea %>
+<div class="row">
+  <div class="col-md-10 offset-md-1">
 
-<%= link_to 'Show', @idea %> |
-<%= link_to 'Back', ideas_path %>
+    <h1>редагувати</h1>
+    <%= render 'form', idea: @idea %>
+
+    <%= link_to 'Show', @idea %> |
+    <%= link_to 'Back', ideas_path %>
+  </div>
+</div>
 

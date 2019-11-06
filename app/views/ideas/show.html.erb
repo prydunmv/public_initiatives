@@ -9,24 +9,28 @@
         <% if current_account.voted_up_on?(@idea) %>
           <%= form_with(url: dislike_idea_votes_path(@idea), local: true) do |form| %>
             <div class="actions">
-              <%= form.submit "-1 " %>
+              <button type="button" class="btn btn-primary btn-lg btn-block">
+              <%= form.submit "-1 " %></button>
             </div>
           <% end %>
           <%= form_with(url: unlike_idea_votes_path(@idea), local: true) do |form| %>
             <div class="actions">
-              <%= form.submit " 0 " %>
+              <button type="button" class="btn btn-secondary btn-lg btn-block">
+              <%= form.submit " 0 " %></button>
             </div>
           <% end %>
 
         <% else %>
           <%= form_with(url: like_idea_votes_path(@idea), local: true) do |form| %>
             <div class="actions">
-              <%= form.submit "+1 " %>
+              <button type="button" class="btn btn-secondary btn-lg btn-block">
+              <%= form.submit "+1 " %></button>
             </div>
           <% end %>
           <%= form_with(url: undislike_idea_votes_path(@idea), local: true) do |form| %>
             <div class="actions">
-              <%= form.submit " 0 " %>
+              <button type="button" class="btn btn-secondary btn-lg btn-block">
+              <%= form.submit " 0 " %></button>
             </div>
           <% end %>
         <% end %>
@@ -34,12 +38,14 @@
       <% else %>
         <%= form_with(url: dislike_idea_votes_path(@idea), local: true) do |form| %>
           <div class="actions">
+            <button type="button" class="btn btn-primary btn-lg btn-block">
             <%= form.submit "-1 " %>
           </div>
         <% end %>
         <%= form_with(url: like_idea_votes_path(@idea), local: true) do |form| %>
           <div class="actions">
-            <%= form.submit "+1 " %>
+            <button type="button" class="btn btn-secondary btn-lg btn-block">
+            <%= form.submit "+1 " %></button>
           </div>
         <% end %>
       <% end %>
@@ -56,9 +62,9 @@
               <div class="row">
                 <div class="col">
                   <div class="float-right">
-                    <%= link_to 'Edit', edit_idea_initiator_proposal_path(@idea, proposal), class: 'btn btn-info' %>
+                    <%= link_to 'Edit', edit_idea_initiator_proposal_path(@idea, proposal), class: 'btn btn-warning' %>
                     <%= link_to 'Destroy', [@idea, proposal], method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-danger' %>
-                </div>
+                  </div>
                 </div>
               </div>
               <% end %>
@@ -79,7 +85,7 @@
                 <% else %>
                   <%= form_with(url: vote_up_idea_initiator_proposal_votes_path(@idea, proposal), local: true) do |form| %>
                     <div class="actions">
-                    <%= form.submit "підтримати" %>
+                    <%= form.submit "підтримати", class: 'btn btn-success' %>
                     </div>
                   <% end %>
                 <% end %>
@@ -96,8 +102,8 @@
       <% unless @proposals.find_by(account_id: current_account.id) %>
         <%= link_to 'хочу втілити цю ідею', new_idea_initiator_proposal_path(@idea) %>
       <% end %>
-      <%= link_to 'Edit', edit_idea_path(@idea) %> |
-      <%= link_to 'Back', ideas_path %>
+      <p><%= link_to 'Edit', edit_idea_path(@idea) %> |
+      <%= link_to 'Back', ideas_path %></p>
     </div>
   </div>
   <!-- Footer -->
