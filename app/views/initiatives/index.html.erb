@@ -1,23 +1,33 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-10 offset-md-1">
 
-<h1>Initiatives</h1>
+    <h1>Initiatives</h1>
 
-<table>
+    <!-- <table>
+      <thead>
+        <tr>
+          <th>idea</th>
+          <th>initiator_proposal</th>
+        </tr>
+      </thead> -->
+       <table class="table table-hover">
   <thead>
     <tr>
-      <th>idea</th>
-      <th>initiator_proposal</th>
+      <th scope="col">idea</th>
+      <th scope="col">initiator_proposal</th>
     </tr>
   </thead>
-  <tbody>
-    <% @initiatives.each do |initiative| %>
-      <tr>
-        <td><%= initiative.idea.title %></td>
-        <td><%= link_to 'Show', initiative %></td> 	
-	<% end %>
-  </tbody>
-</table>
+      <tbody>
+        <% @initiatives.each do |initiative| %>
+          <tr>
+            <td><%= initiative.idea.title %></td>
+            <td><%= link_to 'Show', initiative, class: 'btb btn-info' %></td>
+    	<% end %>
+      </tbody>
+    </table>
 
-<br>
-
+    <br>
+  </div>
+</div>
 

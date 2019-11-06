@@ -1,97 +1,114 @@
 <p id="notice"><%= notice %></p>
-<%= @idea.title %>
-<%= @idea.description %>
+<div class="row">
+  <div class="col-md-10 offset-md-1">
+      <h5 class="card-title"><%= @idea.title %></h5>
+      <p><%= @idea.description %></p>
 
 
-<% if current_account.voted_for?(@idea) %>
-  <% if current_account.voted_up_on?(@idea) %>
-    <%= form_with(url: dislike_idea_votes_path(@idea), local: true) do |form| %>
-      <div class="actions">
-        <%= form.submit "-1 " %>
-      </div>
-    <% end %>
-    <%= form_with(url: unlike_idea_votes_path(@idea), local: true) do |form| %>
-      <div class="actions">
-        <%= form.submit " 0 " %>
-      </div>
-    <% end %>
-
-  <% else %>
-    <%= form_with(url: like_idea_votes_path(@idea), local: true) do |form| %>
-      <div class="actions">
-        <%= form.submit "+1 " %>
-      </div>
-    <% end %>
-    <%= form_with(url: undislike_idea_votes_path(@idea), local: true) do |form| %>
-      <div class="actions">
-        <%= form.submit " 0 " %>
-      </div>
-    <% end %>
-  <% end %>
-
-<% else %>
-  <%= form_with(url: dislike_idea_votes_path(@idea), local: true) do |form| %>
-    <div class="actions">
-      <%= form.submit "-1 " %>
-    </div>
-  <% end %>
-  <%= form_with(url: like_idea_votes_path(@idea), local: true) do |form| %>
-    <div class="actions">
-      <%= form.submit "+1 " %>
-    </div>
-  <% end %>
-<% end %>
- @proposals
-
-<table>
-  <thead>
-    <tr>
-      <th>email</th>
-      <th>задум</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @proposals.each do |proposal| %>
-      <tr>
-        <td><%= proposal.account.email %></td>
-        <td><%= proposal.plan %></td>
-        <td><%= proposal.get_likes.size %></td>
-        <td>
-        <% if current_account.id == proposal.account_id  %>
-          <td><%= link_to 'Edit', edit_idea_initiator_proposal_path(@idea, proposal) %></td>
-          <td><%= link_to 'Destroy', [@idea, proposal], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %> 
-
-        <% unless current_account.id == proposal.account_id  %>
-          <% if current_account.voted_up_on?(proposal) %>
-            <%= form_with(url: vote_un_idea_initiator_proposal_votes_path(@idea, proposal), local: true) do |form| %>
-              <div class="actions">
-                <%= form.submit " ------ " %>
-              </div>
-            <% end %>
-          <% else %>  
-            <%= form_with(url: vote_up_idea_initiator_proposal_votes_path(@idea, proposal), local: true) do |form| %>
-              <div class="actions">
-              <%= form.submit "підтримати" %>
-              </div>
-            <% end %>
+      <% if current_account.voted_for?(@idea) %>
+        <% if current_account.voted_up_on?(@idea) %>
+          <%= form_with(url: dislike_idea_votes_path(@idea), local: true) do |form| %>
+            <div class="actions">
+              <%= form.submit "-1 " %>
+            </div>
+          <% end %>
+          <%= form_with(url: unlike_idea_votes_path(@idea), local: true) do |form| %>
+            <div class="actions">
+              <%= form.submit " 0 " %>
+            </div>
           <% end %>
 
-        <% end %>   
-      </td>
-          
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <% else %>
+          <%= form_with(url: like_idea_votes_path(@idea), local: true) do |form| %>
+            <div class="actions">
+              <%= form.submit "+1 " %>
+            </div>
+          <% end %>
+          <%= form_with(url: undislike_idea_votes_path(@idea), local: true) do |form| %>
+            <div class="actions">
+              <%= form.submit " 0 " %>
+            </div>
+          <% end %>
+        <% end %>
+
+      <% else %>
+        <%= form_with(url: dislike_idea_votes_path(@idea), local: true) do |form| %>
+          <div class="actions">
+            <%= form.submit "-1 " %>
+          </div>
+        <% end %>
+        <%= form_with(url: like_idea_votes_path(@idea), local: true) do |form| %>
+          <div class="actions">
+            <%= form.submit "+1 " %>
+          </div>
+        <% end %>
+      <% end %>
+       @proposals
+
+      <% @proposals.each do |proposal| %>
+        <div class="card">
+          <div class="card-body">
+              <h5 class="card-title"><%= proposal.account.email %></h5>
+              <p><%= proposal.plan %></p>
+              <p><%= proposal.get_likes.size %></p>
+              <p>
+              <% if current_account.id == proposal.account_id  %>
+              <div class="row">
+                <div class="col">
+                  <div class="float-right">
+                    <%= link_to 'Edit', edit_idea_initiator_proposal_path(@idea, proposal), class: 'btn btn-info' %>
+                    <%= link_to 'Destroy', [@idea, proposal], method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-danger' %>
+                </div>
+                </div>
+              </div>
+              <% end %>
+
+              <% unless current_account.id == proposal.account_id  %>
+                <% if current_account.voted_up_on?(proposal) %>
+                  <%= form_with(url: vote_un_idea_initiator_proposal_votes_path(@idea, proposal), local: true) do |form| %>
+                    <div class="row">
+                      <div class="col">
+                        <div class="float-right">
+                          <div class="actions">
+                            <%= form.submit " забрати голос ",class: 'btn btn-warning' %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                <% else %>
+                  <%= form_with(url: vote_up_idea_initiator_proposal_votes_path(@idea, proposal), local: true) do |form| %>
+                    <div class="actions">
+                    <%= form.submit "підтримати" %>
+                    </div>
+                  <% end %>
+                <% end %>
+
+              <% end %>
+            </p>
+          </div>
+        </div>
+      <% end %>
 
 
 
 
-<% unless @proposals.find_by(account_id: current_account.id) %>
-  <%= link_to 'хочу втілити цю ідею', new_idea_initiator_proposal_path(@idea) %> 
-<% end %>
-<%= link_to 'Edit', edit_idea_path(@idea) %> |
-<%= link_to 'Back', ideas_path %>
+      <% unless @proposals.find_by(account_id: current_account.id) %>
+        <%= link_to 'хочу втілити цю ідею', new_idea_initiator_proposal_path(@idea) %>
+      <% end %>
+      <%= link_to 'Edit', edit_idea_path(@idea) %> |
+      <%= link_to 'Back', ideas_path %>
+    </div>
+  </div>
+  <!-- Footer -->
+<footer class="page-footer font-small special-color-dark pt-4">
+
+  <!-- Footer Elements -->
+  <div class="container">
+  <div class="footer-copyright text-center py-3">2019
+    <h5 class="card-title"> smithy</h5>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->

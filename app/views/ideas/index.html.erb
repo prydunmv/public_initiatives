@@ -29,7 +29,7 @@
           <td><%= idea.get_dislikes.size %></td>
           <td><%= link_to 'Show', idea, class: 'btn btn-info' %></td>
           <td><%= link_to 'Edit', edit_idea_path(idea), class: 'btn btn-warning' %></td>
-          <td><%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+          <td><%= link_to 'Destroy', idea, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
   </tbody>
