@@ -9,8 +9,7 @@
         <% if current_account.voted_up_on?(@idea) %>
           <%= form_with(url: dislike_idea_votes_path(@idea), local: true) do |form| %>
             <div class="actions">
-              <button type="button" class="btn btn-primary btn-lg btn-block">
-              <%= form.submit "-1 " %></button>
+              <%= form.submit "-1 ", class: "btn btn-secondary btn-lg btn-block" %>
             </div>
           <% end %>
           <%= form_with(url: unlike_idea_votes_path(@idea), local: true) do |form| %>
@@ -38,13 +37,13 @@
       <% else %>
         <%= form_with(url: dislike_idea_votes_path(@idea), local: true) do |form| %>
           <div class="actions">
-            <button type="button" class="btn btn-primary btn-lg btn-block">
+            <button type="button" class="btn btn-primary btn-sm">
             <%= form.submit "-1 " %>
           </div>
         <% end %>
         <%= form_with(url: like_idea_votes_path(@idea), local: true) do |form| %>
           <div class="actions">
-            <button type="button" class="btn btn-secondary btn-lg btn-block">
+            <button type="button" class="btn btn-primary btn-sm">
             <%= form.submit "+1 " %></button>
           </div>
         <% end %>
