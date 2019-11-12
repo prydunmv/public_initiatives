@@ -1,40 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Ideas</h1>
-
-<!-- <table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Likes</th>
-      <th>Dislikes</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead> -->
-  <table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Likes</th>
-      <th scope="col">Dislikes</th>
-      <th scope="col" colspan="3">Actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
-      <% @ideas.each do |idea| %>
-        <tr>
-          <td><%= idea.title %></td>
-          <td><%= idea.get_likes.size %></td>
-          <td><%= idea.get_dislikes.size %></td>
-          <td><%= link_to 'Show', idea, class: 'btn btn-info' %></td>
-          <td><%= link_to 'Edit', edit_idea_path(idea), class: 'btn btn-warning' %></td>
-          <td><%= link_to 'Destroy', idea, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-  </tbody>
-</table>
-
-<br>
-
 <%= link_to 'New Idea', new_idea_path, class: 'btn btn-primary' %>
+
+<div class="card-columns">
+  <% @ideas.each do |idea| %>
+    <%= link_to idea do %>
+     <div class="card">
+        <div class="card-body">
+            <tr>
+              <h5 class="card-title"><%= idea.title %></h5>
+              <p class="card-text"><%= idea.get_likes.size %> подобається</p>
+              <p class="card-text"><%= idea.get_dislikes.size %> не подобається</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </tr>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

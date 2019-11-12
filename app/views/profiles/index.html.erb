@@ -9,7 +9,7 @@
 	      <th colspan="3"></th>
 	    </tr>
 	  </thead> -->
-	 <table class="table table-hover">
+	<!--  <table class="table table-hover">
 	  <thead>
 	    <tr>
 	      <th scope="col">email</th>
@@ -27,5 +27,21 @@
 				<td><%= link_to 'edit', edit_profile_path(@person_profile), class: 'btn btn-warning'%></td>
 	    </tr>
 	  </tbody>
-	</table>
+	</table> -->
+
+	<div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="..." class="card-img" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%= @person_profile.account.email %></h5>
+        <p class="card-text"><%= @person_profile.first_name %></p>
+        <p class="card-text"><%= @person_profile. last_name %></p>
+        <td><%= link_to 'edit', edit_profile_path(@person_profile), class: 'btn btn-warning'%></td>
+      </div>
+    </div>
+  </div>
+</div>
 
