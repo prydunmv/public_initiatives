@@ -11,16 +11,16 @@
   <% end %>
   <%= form_with(model:[@initiative, @stage], local: true) do |form| %>
   <%= form.hidden_field :account_id, value: current_account.id %>
-  <p><%= form.label 'назва етапу' %>
+  <p><h5 class="card-title"><%= form.label 'назва етапу' %></h5>
     <%= form.text_field :title %></p>
-  <p><%= form.label 'опис етапу' %>
+  <p><h5 class="card-title"><%= form.label 'опис етапу' %></h5>
     <%= form.text_area :body %></p>
   <p><%= form.label 'дата створення' %>
     <%= form.date_select :start_date %></p>
   <p><%= form.label 'дата завершення' %>
     <%= form.date_select :end_date %></p>
   <div class="actions">
-    <%= form.submit "опублікувати" %>
+    <%= form.submit "опублікувати", class: 'btn btn-primary' %>
   </div>
 <% end %>
 
