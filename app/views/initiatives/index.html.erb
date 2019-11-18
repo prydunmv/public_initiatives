@@ -1,23 +1,14 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Initiatives</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>idea</th>
-      <th>initiator_proposal</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @initiatives.each do |initiative| %>
-      <tr>
-        <td><%= initiative.idea.title %></td>
-        <td><%= link_to 'Show', initiative %></td> 	
-	<% end %>
-  </tbody>
-</table>
-
-<br>
-
+ <p id="notice"><%= notice %></p>
+ <% @initiatives.each do |initiative| %>
+  <div class="card">
+    <div class="card-header">
+      idea
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= initiative.idea.title %></h5>
+      <p class="card-text">initiator_proposal</p>
+      <%= link_to 'Show', initiative, class: 'btn btn-primary' %>
+    </div>
+  </div>
+  <% end %>
 

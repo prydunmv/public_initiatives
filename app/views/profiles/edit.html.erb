@@ -1,6 +1,13 @@
-<h1>редагувати</h1>
-<%= render 'form',person_profile: @profile %>
-
+<div class="row">
+  <div class="col-md-10 offset-md-1">
+    <div class="card">
+      <div class="card-body">
+          <h1>редагувати</h1>
+          <%= render 'form',person_profile: @profile %>
+      </div>
+    </div>
+  </div>
+</div>
 <%= link_to 'Show', @profile %> |
 <%= link_to 'Back', profiles_path %>
 

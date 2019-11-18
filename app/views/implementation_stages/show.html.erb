@@ -1,8 +1,18 @@
 <p id="notice"><%= notice %></p>
-<p><%= @stage.title %></p>
-<p><%= @stage.body %></p>
-<p><%= @stage.start_date %></p>
-<p><%= @stage.end_date %></p>
-<p><%= link_to "Edit", edit_initiative_implementation_stage_path(@initiative, @stage) %></p>
- <td><%= link_to 'Destroy', [@initiative, @stage], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><%= @stage.title %></h5>
+    <p><%= @stage.body %></p>
+    <p><%= @stage.start_date %></p>
+    <p><%= @stage.end_date %></p>
+    <div class="row">
+      <div class="col">
+        <div class="float-right">
+          <p><%= link_to "Edit", edit_initiative_implementation_stage_path(@initiative, @stage), class: 'btn btn-warning' %>
+           <%= link_to 'Destroy', [@initiative, @stage], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <p><%= link_to 'Back', initiative_path(@initiative) %></p>

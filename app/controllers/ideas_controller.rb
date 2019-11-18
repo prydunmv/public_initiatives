@@ -71,6 +71,6 @@ class IdeasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def idea_params
-      params.fetch(:idea, {}).permit(:title, :description, :author_id )
+      params.fetch(:idea, {}).permit(:title, :description, :author_id)
     end
 end
